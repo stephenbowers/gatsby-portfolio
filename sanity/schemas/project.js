@@ -38,6 +38,12 @@ export default {
             type: 'url',
             description: 'URL to GitHub project repo',
         },
+        {
+            name: 'demoUrl',
+            title: 'Demo Link',
+            type: 'url',
+            description: 'URL to demo or live site',
+        },
         // Can add technologies
     ],
 };
