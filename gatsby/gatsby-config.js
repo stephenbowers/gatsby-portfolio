@@ -16,6 +16,9 @@ export default {
   },
   plugins: [
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-sanity',
       options: {
@@ -23,7 +26,14 @@ export default {
         dataset: 'production',
         watchMode: true,
         token: process.env.SANITY_TOKEN,
-      }
-    }
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sanity-image',
+      options: {
+        projectId: 'wl845ngl',
+        dataset: 'production',
+      },
+    },
   ],
 };

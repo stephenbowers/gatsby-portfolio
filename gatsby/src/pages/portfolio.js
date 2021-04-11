@@ -1,6 +1,8 @@
+import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Layout from "../components/Layout"
+import Layout from '../components/Layout';
+import SanityImage from 'gatsby-plugin-sanity-image';
 
 const ProjectsGrid = styled.div`
     display: grid;
@@ -18,35 +20,46 @@ const ProjectsStyles = styled.div`
         display: block;
         margin-left: auto;
         margin-right: auto;
+        max-width: 500px;
     }
 `;
 
-export default function PortfolioPage() {
+export const query = graphql`
+    query ProjectQuery {
+        projects: allSanityProject {
+            nodes {
+                name
+                slug {
+                    current
+                }
+                description
+                githubUrl
+                demoUrl
+                id
+                image {
+                    ...ImageWithPreview
+                }
+            }
+        }
+    }
+`;
+
+export default function PortfolioPage({ data }) {
+    const projects = data.projects.nodes;
+
     return (
         <Layout>
             <h2 className="center">Portfolio</h2>
             <ProjectsGrid> {/* Grid of Projects */}
-                <ProjectsStyles> {/* Individual Project */}
-                    <img src="https://via.placeholder.com/500x300" alt="Project" />
-                    <a href="/">Title Link</a>
-                    <a href="/">Github Link</a> {/* if available */}
-                    <a href="/">Click For Details</a>
-                    <p>Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla justo turpis, sollicitudin non feugiat at, ultrices ut leo. Sed imperdiet vulputate feugiat. Etiam orci dolor, dictum condimentum consectetur non, vulputate eget dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis aliquet egestas magna id efficitur. Curabitur quis augue in mauris accumsan convallis id ac nunc. Sed fermentum massa lorem, maximus convallis magna interdum ac. Ut finibus sapien at auctor lacinia. Proin iaculis nisi ex, in pretium magna porta vitae. Fusce non nibh iaculis, eleifend nulla ut, pretium arcu. Phasellus non dolor aliquet, dapibus sem laoreet, hendrerit enim. Suspendisse potenti.</p>
-                </ProjectsStyles>
-                <ProjectsStyles> {/* Individual Project */}
-                    <img src="https://via.placeholder.com/500x300" alt="Project" />
-                    <a href="/">Title Link</a>
-                    <a href="/">Github Link</a> {/* if available */}
-                    <a href="/">Click For Details</a>
-                    <p>Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla justo turpis, sollicitudin non feugiat at, ultrices ut leo. Sed imperdiet vulputate feugiat. Etiam orci dolor, dictum condimentum consectetur non, vulputate eget dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis aliquet egestas magna id efficitur. Curabitur quis augue in mauris accumsan convallis id ac nunc. Sed fermentum massa lorem, maximus convallis magna interdum ac. Ut finibus sapien at auctor lacinia. Proin iaculis nisi ex, in pretium magna porta vitae. Fusce non nibh iaculis, eleifend nulla ut, pretium arcu. Phasellus non dolor aliquet, dapibus sem laoreet, hendrerit enim. Suspendisse potenti.</p>
-                </ProjectsStyles>
-                <ProjectsStyles> {/* Individual Project */}
-                    <img src="https://via.placeholder.com/500x300" alt="Project" />
-                    <a href="/">Title Link</a>
-                    <a href="/">Github Link</a> {/* if available */}
-                    <a href="/">Click For Details</a>
-                    <p>Description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla justo turpis, sollicitudin non feugiat at, ultrices ut leo. Sed imperdiet vulputate feugiat. Etiam orci dolor, dictum condimentum consectetur non, vulputate eget dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis aliquet egestas magna id efficitur. Curabitur quis augue in mauris accumsan convallis id ac nunc. Sed fermentum massa lorem, maximus convallis magna interdum ac. Ut finibus sapien at auctor lacinia. Proin iaculis nisi ex, in pretium magna porta vitae. Fusce non nibh iaculis, eleifend nulla ut, pretium arcu. Phasellus non dolor aliquet, dapibus sem laoreet, hendrerit enim. Suspendisse potenti.</p>
-                </ProjectsStyles>
+                {projects.map((project) => (
+                    <ProjectsStyles key={project.id}> {/* Individual Project */}
+                        <SanityImage {...project.image} width={500} height={300} alt={project.name} />
+                        <a href={project.demoUrl}>{project.name}</a>
+                        {project.githubUrl ? <a href={project.githubUrl}>Github</a> : ""}
+                        <a href={project.slug.current}>Click For Details</a>
+                        <p>{project.description}</p>
+                    </ProjectsStyles>
+                ))}
             </ProjectsGrid>
         </Layout>
     );

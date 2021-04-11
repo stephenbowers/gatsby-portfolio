@@ -9,6 +9,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import project from './project';
 import job from './job';
 import education from './education';
+import bio from './bio';
 
 export default createSchema({
   // We name our schema
@@ -19,6 +20,7 @@ export default createSchema({
     /* Your types here! */
     project,
     job,
-    education
+    education,
+    bio,
   ]),
 })

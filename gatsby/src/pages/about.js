@@ -1,6 +1,8 @@
+import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Layout from "../components/Layout"
+import Layout from '../components/Layout';
+import SanityImage from 'gatsby-plugin-sanity-image';
 
 const AboutStyles = styled.div`
     display: grid;
@@ -10,6 +12,7 @@ const AboutStyles = styled.div`
         margin-left: auto;
         margin-right: auto;
         border-radius: 50%;
+        max-width: 200px;
     }
 
     h2 {
@@ -21,54 +24,84 @@ const AboutStyles = styled.div`
     }
 `;
 
-export default function AboutPage() {
+export const query = graphql`
+    query JobQuery {
+        jobs: allSanityJob {
+            nodes {
+                id
+                company
+                startDate(formatString: "")
+                endDate(formatString: "")
+                location
+                title
+                duties
+            }
+        }
+        schools: allSanityEducation {
+                nodes {
+                    id
+                    school
+                    startYear
+                    endYear
+                    degree
+                }
+        }
+        bio: sanityBio {
+            biography
+            tagline
+            image {
+                ...ImageWithPreview
+            }
+        }
+    }
+`;
+
+
+export default function AboutPage({ data }) {
+    const jobs = data.jobs.nodes;
+    const schools = data.schools.nodes;
+    const bio = data.bio;
+
     return (
         <Layout>
             <AboutStyles>
                 <h2>About</h2>
-                <img src="https://via.placeholder.com/200x200" alt="Stephen Bowers Portrait" />
-                <span>Tagline</span>
-                <p>Biography Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla justo turpis, sollicitudin non feugiat at, ultrices ut leo. Sed imperdiet vulputate feugiat. Etiam orci dolor, dictum condimentum consectetur non, vulputate eget dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis aliquet egestas magna id efficitur. Curabitur quis augue in mauris accumsan convallis id ac nunc. Sed fermentum massa lorem, maximus convallis magna interdum ac. Ut finibus sapien at auctor lacinia. Proin iaculis nisi ex, in pretium magna porta vitae. Fusce non nibh iaculis, eleifend nulla ut, pretium arcu. Phasellus non dolor aliquet, dapibus sem laoreet, hendrerit enim. Suspendisse potenti.</p>
+                <SanityImage {...bio.image} width={200} height={200} alt={bio.tagline} />
+                <span>{bio.tagline}</span>
+                <p>{bio.biography}</p>
             </AboutStyles>
+            <h2>Resume</h2>
             <div>
-                <h2>Resume</h2>
-                <h3>Work Experience</h3>
-                <div>  {/* Resume Grid */}
-                    <div> {/* Single Job */}
-                        <p>Company Name</p>
-                        <p>Dates Worked</p>
-                        <p>Location</p>
-                        <p>Title</p>
-                        <ul> {/* Duties/Details */}
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                        </ul>
-                    </div>
-                    <div> {/* Single Job */}
-                        <p>Company Name</p>
-                        <p>Dates Worked</p>
-                        <p>Location</p>
-                        <p>Title</p>
-                        <ul> {/* Duties/Details */}
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                        </ul>
-                    </div>
-                    <div> {/* Single Job */}
-                        <p>Company Name</p>
-                        <p>Dates Worked</p>
-                        <p>Location</p>
-                        <p>Title</p>
-                        <ul> {/* Duties/Details */}
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                            <li>Duty Fusce non nibh iaculis, eleifend nulla ut, pretium arcu.</li>
-                        </ul>
-                    </div>
+            <h3>Work Experience</h3>
+            <div>  {/* Resume Grid */}
+            {jobs.map((job) => (
+                
+                <div id={job.id}> {/* Single Job */}
+                    <p>{job.company}</p>
+                    <p>
+                        {job.startDate} - {job.endDate === null ? 'Present' : job.endDate}
+                    </p>
+                    <p>{job.location}</p>
+                    <p>{job.title}</p>
+                    <ul> {/* Duties/Details */}
+                        {job.duties.map((duty, i) =>
+                            <li key={i}>{duty}</li>
+                        )}
+                    </ul>
                 </div>
+            ))}
             </div>
+            <h3>Education</h3>
+            
+            {schools.map((school) => (
+                <div key={school.id}>
+                <p>{school.school}</p>
+                <p>{school.startYear} {school.startYear === school.endYear ? '' : ' - ' + school.endYear}</p>
+                <p>{school.degree}</p>
+                </div>
+            ))}
+            
+        </div>
         </Layout>
     );
 }

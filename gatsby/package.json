@@ -22,6 +22,7 @@
     "gatsby-image": "^3.2.0",
     "gatsby-plugin-image": "^1.2.1",
     "gatsby-plugin-react-helmet": "^4.2.0",
+    "gatsby-plugin-sanity-image": "^0.6.0",
     "gatsby-plugin-sharp": "^3.2.1",
     "gatsby-plugin-styled-components": "^4.2.0",
     "gatsby-source-filesystem": "^3.2.0",
