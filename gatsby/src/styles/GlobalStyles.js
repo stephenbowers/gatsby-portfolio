@@ -1,7 +1,22 @@
 import { createGlobalStyle } from 'styled-components';
 import '@fontsource/staatliches';
+import "@fontsource/open-sans";
 
 const GlobalStyles = createGlobalStyle`
+    :root {
+        --black: #000000; //
+        --onyx: #363946; //
+        --dimgray: #696773; //
+        --morningblue: #819595; //
+        --ashgray: #b1b6a6; // 
+    }
+
+    body {
+        background-color: white;
+        color: var(--black);
+        font-family: 'Open Sans', sans-serif;
+    }
+
     .center {
         text-align: center;
     }
@@ -21,7 +36,18 @@ const GlobalStyles = createGlobalStyle`
     }
 
     nav, h1, h2 {
-        font-family: 'Staatliches', 'Open Sans', sans-serif;;
+        font-family: 'Staatliches', 'Open Sans', sans-serif;
+        color: var(--dimgray);
+        text-align: center;
+    }
+    a {
+        color: var(--dimgray);
+    }
+    a:visited {
+        color: var(--dimgray);
+    }
+    a:hover {
+        color: var(--morningblue);
     }
 `;
 

@@ -14,12 +14,14 @@ const FormStyles = styled.form`
     fieldset {
         display: grid;
     }
+
     label {
         display: grid;
     }
 
     button {
         margin-top: 1rem;
+        font-size: 1rem;
     }
 `;
 

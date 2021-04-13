@@ -38,6 +38,7 @@ export default function useSubmit({ values }) {
             // It worked
             setLoading(false);
             setMessage('Successfully submitted!');
+            //TODO: Reset form
         }
     }
 

@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const NavStyles = styled.nav`
-    border: 1px solid black;
     margin-bottom: 4rem;
     ul {
         margin: 0;
@@ -16,8 +15,11 @@ const NavStyles = styled.nav`
     li {
         font-size: 2rem;
     }
+    li:hover {
+        transform: translate(0, 5%);
+    }
     a {
-            text-decoration: none;
+        text-decoration: none;
     }
 
     .logo {

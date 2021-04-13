@@ -10,7 +10,6 @@ const SocialStyles = styled.ul`
     gap: 2rem;
     text-align: center;
     list-style: none;
-    align-content: center;
     margin: 0;
     padding: 0;
 
@@ -20,7 +19,17 @@ const SocialStyles = styled.ul`
     }
 
     a {
+        display: grid;
         font-size: 1.5rem;
+        color: var(--dimgray);
+        align-items: center;
+        padding: 5px;
+    }
+    a:visited {
+        color: var(--dimgray);
+    }
+    a:hover {
+        color: var(--morningblue);
     }
 `;
 
