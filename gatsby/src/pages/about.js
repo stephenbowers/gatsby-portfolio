@@ -30,8 +30,8 @@ export const query = graphql`
             nodes {
                 id
                 company
-                startDate(formatString: "")
-                endDate(formatString: "")
+                startDate(formatString: "MMM YYYY")
+                endDate(formatString: "MMM YYYY")
                 location
                 title
                 duties
@@ -41,8 +41,8 @@ export const query = graphql`
                 nodes {
                     id
                     school
-                    startYear
-                    endYear
+                    startYear(formatString: "YYYY")
+                    endYear(formatString: "YYYY")
                     degree
                 }
         }
