@@ -18,22 +18,7 @@ const HomeStyles = styled.div`
   h2 {
     font-size: 4rem;
   }
-
 `;
-/*
-  Tech terms sparkle/grow&shrink like stars?
-  Terms rotate in a circle?
-  <span>React</span>
-        <span>Gatsby</span>
-        <span>Javascript</span>
-        <span>CSS</span>
-        <span>Git</span>
-        <span>Bootstrap</span>
-        <span>Sanity</span>
-        <span>HTML</span>
-        <span>Netlify</span>
-        <span>Design</span>
-*/
 
 export default function Home() {
   return (
@@ -41,7 +26,6 @@ export default function Home() {
       <HomeStyles>
         <h1>Stephen Bowers</h1>
         <h2>Web Developer</h2>
-        {/* TODO: Add animation or graphic */}
       </HomeStyles>
     </Layout>
   );

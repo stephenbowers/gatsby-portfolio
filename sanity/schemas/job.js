@@ -45,4 +45,13 @@ export default {
             description: 'Job Duties and Accomplishments',
         },
     ],
+    orderings: [
+        {
+            title: 'Start Date, Desc.',
+            name: 'startDateDesc',
+            by: [
+                {field: 'startDate', direction: 'desc'}
+            ]
+        }
+    ]
 };

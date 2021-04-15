@@ -46,7 +46,7 @@ export const query = graphql`
 
 export default function PortfolioPage({ data }) {
     const projects = data.projects.nodes;
-
+    
     return (
         <Layout>
             <h2 className="center">Portfolio</h2>
@@ -56,7 +56,7 @@ export default function PortfolioPage({ data }) {
                         <SanityImage {...project.image} width={500} height={300} alt={project.name} />
                         <a href={project.demoUrl}>{project.name}</a>
                         {project.githubUrl ? <a href={project.githubUrl}>Github</a> : ""}
-                        <a href={project.slug.current}>Click For Details</a>
+                        <a href={"project/" + project.slug.current}>Click For Details</a>
                         <p>{project.description}</p>
                     </ProjectsStyles>
                 ))}

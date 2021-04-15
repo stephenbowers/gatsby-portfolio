@@ -4,6 +4,15 @@ import Layout from "../components/Layout"
 import useForm from '../utils/useForm';
 import useSubmit from '../utils/useSubmit';
 
+const ContactStyles = styled.div`
+    .success-message {
+        background-color: #a7e8b0;
+        color: green;
+        border-radius: 5px;
+        text-align: center;
+    }
+`;
+
 const FormStyles = styled.form`
     display: grid;
     
@@ -13,15 +22,30 @@ const FormStyles = styled.form`
 
     fieldset {
         display: grid;
+        border-radius: 10px;
     }
 
     label {
         display: grid;
     }
 
+    .error-message {
+        margin-top: .5rem;
+        color: red;
+        text-align: center;
+    }
+
     button {
-        margin-top: 1rem;
+        margin-top: .5rem;
         font-size: 1rem;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #c2f3fc;
+    }
+    button:active {
+        transform: translate(0, 5%);
+        background-color: #abd6de;
     }
 `;
 
@@ -45,7 +69,9 @@ export default function ContactPage() {
     return (
         <Layout>
             <h2>Contact</h2>
-            {message ? <p>{message}</p> : ''}
+            <ContactStyles>
+            {message ? <p className="success-message">{message}</p> : ''}
+            </ContactStyles>
             <FormStyles onSubmit={submitForm}>
                 <fieldset disabled={loading}>
                     <legend>Contact Form</legend>
@@ -87,7 +113,7 @@ export default function ContactPage() {
                         onChange={updateValue}
                         className="mapleSyrup"
                     />
-                    <div>
+                    <div className="error-message">
                         {error ? <p>Error: {error}</p> : ''}
                     </div>
                     <button type="submit" disabled={loading}>
