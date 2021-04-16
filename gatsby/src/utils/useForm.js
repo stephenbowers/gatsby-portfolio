@@ -17,5 +17,5 @@ export default function useForm(defaults) {
         });
     }
 
-    return { values, updateValue };
+    return { values, updateValue, };
 }

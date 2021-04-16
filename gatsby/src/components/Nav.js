@@ -26,6 +26,25 @@ const NavStyles = styled.nav`
         text-align: left;
         padding-left: 2rem;
     }
+
+    @media (max-width: 600px) {
+        li {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        ul {
+            grid-template-columns: 1fr;
+        }
+        li {
+            font-size: 1.25rem;
+        }
+        .logo {
+            text-align: center;
+            padding-left: 0;
+        }
+    }
 `;
 
 export default function Nav() {

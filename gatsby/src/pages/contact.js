@@ -11,6 +11,10 @@ const ContactStyles = styled.div`
         border-radius: 5px;
         text-align: center;
     }
+
+    @media (max-width: 400px) {
+        padding: 0 1rem;
+    }
 `;
 
 const FormStyles = styled.form`
@@ -46,6 +50,10 @@ const FormStyles = styled.form`
     button:active {
         transform: translate(0, 5%);
         background-color: #abd6de;
+    }
+
+    @media (max-width: 400px) {
+        padding: 0 1rem;
     }
 `;
 

@@ -18,6 +18,16 @@ const HomeStyles = styled.div`
   h2 {
     font-size: 4rem;
   }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
 `;
 
 export default function Home() {

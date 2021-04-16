@@ -30,6 +30,9 @@ const ResumeStyles = styled.div`
     .school {
         margin-bottom: 10px;
     }
+    @media (max-width: 400px) {
+        margin: 0 1rem;
+    }
 `;
 
 export const query = graphql`
@@ -77,7 +80,7 @@ export default function AboutPage({ data }) {
                 <h2>About</h2>
                 <SanityImage {...bio.image} width={200} height={200} alt={bio.tagline} />
                 <div className="bio-text">
-                    <p>I'm a San Diego based web developer looking for new opportunities and a company to grow with. I am experienced in HTML, CSS, Javascript, and React. I also have experience with Wordpress, Node, and Mongo.</p>
+                    <p>I'm a San Diego based web developer looking for new opportunities and a company to grow with. I am experienced in HTML, CSS, Javascript, and React. I also have experience with Wordpress, Node, and MongoDB.</p>
                     <p>In another area of my life, I teach, coach, and perform longform improv comedy. I'm part of a community based on support and collaboration.</p>
                     <p>Fun Fact: I once performed in a show with Kevin McDonald from Kids in the Hall.</p>
                     <p>My hobbies include baking, drawing, painting, writing, tabletop games, and game design.</p>
