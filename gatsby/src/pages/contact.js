@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import useForm from '../utils/useForm';
 import useSubmit from '../utils/useSubmit';
-import SEO from '../components/SEO';
+import Seo from '../components/Seo';
 
 const ContactStyles = styled.div`
     .success-message {
@@ -68,7 +68,7 @@ export default function ContactPage() {
 
     return (
         <>
-            <SEO title={"Contact"} />
+            <Seo title={"Contact"} />
             <h2>Contact</h2>
             <ContactStyles>
             {message ? <p className="success-message">{message}</p> : ''}

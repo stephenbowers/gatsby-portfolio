@@ -26,6 +26,7 @@ export default {
       options: {
         projectId: 'wl845ngl',
         dataset: 'production',
+        apiVersion: '2021-04-16',
         watchMode: true,
         token: process.env.SANITY_TOKEN,
       },

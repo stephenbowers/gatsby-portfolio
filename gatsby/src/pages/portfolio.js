@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import SanityImage from 'gatsby-plugin-sanity-image';
-import SEO from '../components/SEO';
+import Seo from '../components/Seo';
 
 const ProjectsGrid = styled.div`
     display: grid;
@@ -49,7 +49,7 @@ export default function PortfolioPage({ data }) {
     
     return (
         <>
-            <SEO title={"Portfolio"} />
+            <Seo title={"Portfolio"} />
             <h2 className="center">Portfolio</h2>
             <ProjectsGrid> {/* Grid of Projects */}
                 {projects.map((project) => (

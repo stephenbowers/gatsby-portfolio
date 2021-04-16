@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import SanityImage from 'gatsby-plugin-sanity-image';
-import SEO from '../components/SEO';
+import Seo from '../components/Seo';
 import styled from 'styled-components';
 
 const ProjectStyles = styled.div`
@@ -16,7 +16,7 @@ export default function SingleProjectPage({ data }) {
     const { project } = data;
     return (
         <>
-        <SEO title={project.name} image={project.image?.asset?.url} />
+        <Seo title={project.name} image={project.image?.asset?.url} />
         <h2>{project.name}</h2>
         <ProjectStyles>
         <Link to="/portfolio">Back</Link>
