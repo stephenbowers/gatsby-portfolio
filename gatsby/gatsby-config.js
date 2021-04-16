@@ -13,12 +13,14 @@ export default {
     title: `That Stephen Bowers`,
     siteUrl: 'https://thatstephenbowers.com',
     description: 'The web developer portfolio of Stephen Bowers.',
+    twitter: '@StephenReacts',
   },
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-sanity',
       options: {

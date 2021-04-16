@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
 import SanityImage from 'gatsby-plugin-sanity-image';
+import SEO from '../components/SEO';
 
 const BioStyles = styled.div`
     display: grid;
@@ -71,8 +71,9 @@ export default function AboutPage({ data }) {
     const bio = data.bio;
 
     return (
-        <Layout>
+        <>
             <BioStyles>
+                <SEO title={"About"} />
                 <h2>About</h2>
                 <SanityImage {...bio.image} width={200} height={200} alt={bio.tagline} />
                 <div className="bio-text">
@@ -113,6 +114,6 @@ export default function AboutPage({ data }) {
                     </div>
                 ))}
             </ResumeStyles>
-        </Layout>
+        </>
     );
 }

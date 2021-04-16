@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components";
-import Layout from "../components/Layout"
+import React from 'react';
+import styled from 'styled-components';
+import SEO from '../components/SEO';
 
 const HomeStyles = styled.div`
   
@@ -22,11 +22,12 @@ const HomeStyles = styled.div`
 
 export default function Home() {
   return (
-    <Layout>
+    <>
+      <SEO title={'Home'} />
       <HomeStyles>
         <h1>Stephen Bowers</h1>
         <h2>Web Developer</h2>
       </HomeStyles>
-    </Layout>
+    </>
   );
 }

@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
 import SanityImage from 'gatsby-plugin-sanity-image';
+import SEO from '../components/SEO';
 
 const ProjectsGrid = styled.div`
     display: grid;
@@ -48,7 +48,8 @@ export default function PortfolioPage({ data }) {
     const projects = data.projects.nodes;
     
     return (
-        <Layout>
+        <>
+            <SEO title={"Portfolio"} />
             <h2 className="center">Portfolio</h2>
             <ProjectsGrid> {/* Grid of Projects */}
                 {projects.map((project) => (
@@ -61,6 +62,6 @@ export default function PortfolioPage({ data }) {
                     </ProjectsStyles>
                 ))}
             </ProjectsGrid>
-        </Layout>
+        </>
     );
 }
