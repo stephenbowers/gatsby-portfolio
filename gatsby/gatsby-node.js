@@ -16,7 +16,6 @@ async function turnProjectsIntoPages({ graphql, actions }) {
         }
       }
     `);
-    console.log(data);
     // Loop over each project and create a page for each project
     data.projects.nodes.forEach((project) => {
         actions.createPage({
