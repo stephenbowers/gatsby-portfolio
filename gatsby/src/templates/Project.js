@@ -1,9 +1,19 @@
 import { graphql } from 'gatsby';
 import React from 'react';
+import SanityImage from 'gatsby-plugin-sanity-image';
 
-export default function SingleProjectPage() {
+export default function SingleProjectPage({ data }) {
+    const { project } = data;
     return (
-        <p>Single Project Page</p>
+        <>
+        <h2>{project.name}</h2>
+        <div>
+            <SanityImage {...project.image} width={500} height={300} alt={project.name} />
+            <a href={project.demoUrl}>{project.name}</a>
+            {project.githubUrl ? <a href={project.githubUrl}>Github</a> : ""}
+            <p>{project.description}</p>
+        </div>
+        </>
     );
 }
 
@@ -15,6 +25,9 @@ export const query = graphql`
         }) {
             name
             id
+            description
+            githubUrl
+            demoUrl
             image {
                 ...ImageWithPreview
             }
