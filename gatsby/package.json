@@ -12,8 +12,7 @@
     "serve": "cross-env NODE_OPTIONS=\"-r esm\" gatsby serve",
     "clean": "gatsby clean",
     "netlify": "netlify dev",
-    "prebuild": "netlify-lambda install",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "prebuild": "netlify-lambda install"
   },
   "dependencies": {
     "@fontsource/open-sans": "^4.2.2",
@@ -44,8 +43,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/stephenbowers/gatsby-portfolio"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
