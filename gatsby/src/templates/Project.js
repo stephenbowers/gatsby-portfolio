@@ -16,7 +16,7 @@ const ProjectStyles = styled.div`
         margin-bottom: 1rem;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 550px) {
         padding: 0 1rem;
         img {
             max-width: 300px;

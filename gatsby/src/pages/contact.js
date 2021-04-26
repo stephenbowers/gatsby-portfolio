@@ -1,24 +1,44 @@
-import React from 'react';
-import styled from 'styled-components';
-import useForm from '../utils/useForm';
-import useSubmit from '../utils/useSubmit';
+import React, { useState }  from "react"
+import axios from "axios";
+import styled from "styled-components";
 import SEO from '../components/SEO';
 
-const ContactStyles = styled.div`
-    .success-message {
-        background-color: #a7e8b0;
-        color: green;
-        border-radius: 5px;
-        text-align: center;
-    }
+const MyForm = () => {
 
-    @media (max-width: 400px) {
-        padding: 0 1rem;
-    }
-`;
+    const [serverState, setServerState] = useState({
+      submitting: false,
+      status: null
+    });
+    const handleServerResponse = (ok, msg, form) => {
+      setServerState({
+        submitting: false,
+        status: { ok, msg }
+      });
+      if (ok) {
+        form.reset();
+      }
+    };
+    const handleOnSubmit = e => {
+      e.preventDefault();
+      const form = e.target;
+      setServerState({ submitting: true });
+      axios({
+        method: "post",
+        url: "https://getform.io/f/ee32c79d-5560-4a7b-a18b-1a5eef2db6ec",
+        data: new FormData(form)
+      })
+        .then(r => {
+          handleServerResponse(true, "Thanks!", form);
+        })
+        .catch(r => {
+          handleServerResponse(false, r.response.data.error, form);
+        });
+    };
 
-const FormStyles = styled.form`
-    display: grid;
+    const FormStyles = styled.div`
+    .form {
+        display: grid;
+    }
     
     .mapleSyrup {
         display: none;
@@ -29,8 +49,8 @@ const FormStyles = styled.form`
         border-radius: 10px;
     }
 
-    label {
-        display: grid;
+    input {
+        margin-bottom: .75rem;
     }
 
     .error-message {
@@ -52,84 +72,27 @@ const FormStyles = styled.form`
         background-color: #abd6de;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 550px) {
         padding: 0 1rem;
     }
-`;
-
-export default function ContactPage() {
-    const { values, updateValue } = useForm({
-        name: '',
-        email: '',
-        message: '',
-        mapleSyrup: '',
-    });
-
-    const {
-        error,
-        loading,
-        message,
-        submitForm,
-    } = useSubmit({
-        values,
-    });
+    `;
 
     return (
-        <>
-            <SEO title={"Contact"} />
-            <h2>Contact</h2>
-            <ContactStyles>
-            {message ? <p className="success-message">{message}</p> : ''}
-            </ContactStyles>
-            <FormStyles onSubmit={submitForm}>
-                <fieldset disabled={loading}>
-                    <legend>Contact Form</legend>
-                    <label htmlFor="name">
-                        Name
-                        <input 
-                            type="text"
-                            name="name"
-                            id="name"
-                            value={values.name}
-                            onChange={updateValue}
-                        />
-                    </label>
-                    <label htmlFor="email">
-                        Email
-                        <input 
-                            type="email"
-                            name="email"
-                            id="email"
-                            value={values.email}
-                            onChange={updateValue}
-                        />
-                    </label>
-                    <label htmlFor="message">
-                        Message
-                        <textarea
-                            type="textarea"
-                            name="message"
-                            id="message"
-                            value={values.message}
-                            onChange={updateValue}
-                        />
-                    </label>
-                    <input 
-                        type="mapleSyrup"
-                        name="mapleSyrup"
-                        id="mapleSyrup"
-                        value={values.mapleSyrup}
-                        onChange={updateValue}
-                        className="mapleSyrup"
-                    />
-                    <div className="error-message">
-                        {error ? <p>Error: {error}</p> : ''}
-                    </div>
-                    <button type="submit" disabled={loading}>
-                        {loading ? 'Submitting...' : 'Submit'}
-                    </button>
-                </fieldset>
-            </FormStyles>
-        </>
+      <>
+      <SEO title={"Contact"} />
+        <FormStyles>
+            <div className="col-md-8 mt-5">
+                <h2>Contact</h2>
+                <form className="form" onSubmit={handleOnSubmit}>
+                    <input type="text" name="name" placeholder="Your Name" />
+                    <input type="email" name="email" placeholder="Your Email" />
+                    <input type="text" name="message" placeholder="Your Message" />
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </FormStyles>
+      </>
     );
-}
+  };
+
+  export default MyForm;

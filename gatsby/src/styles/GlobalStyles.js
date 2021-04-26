@@ -1,6 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import '@fontsource/staatliches';
-import "@fontsource/open-sans";
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -14,7 +12,6 @@ const GlobalStyles = createGlobalStyle`
     body {
         background-color: #dee3e0;
         color: var(--black);
-        font-family: 'Open Sans', sans-serif;
     }
 
     .center {
@@ -36,7 +33,6 @@ const GlobalStyles = createGlobalStyle`
     }
 
     nav, h1, h2 {
-        font-family: 'Staatliches', 'Open Sans', sans-serif;
         color: var(--dimgray);
         text-align: center;
     }

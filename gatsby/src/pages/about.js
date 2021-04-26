@@ -30,7 +30,7 @@ const ResumeStyles = styled.div`
     .school {
         margin-bottom: 10px;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 550px) {
         margin: 0 1rem;
     }
 `;

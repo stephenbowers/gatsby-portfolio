@@ -24,7 +24,7 @@ const ProjectsStyles = styled.div`
         max-width: 500px;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 550px) {
         img {
             max-width: 300px;
         }

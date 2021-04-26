@@ -36,6 +36,7 @@ export default {
       options: {
         projectId: 'wl845ngl',
         dataset: 'production',
+        apiVersion: '2021-04-16',
       },
     },
   ],

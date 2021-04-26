@@ -27,13 +27,19 @@ const NavStyles = styled.nav`
         padding-left: 2rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 750px) {
+        li {
+            padding: 0 10px;
+        }
+    }
+
+    @media (max-width: 650px) {
         li {
             font-size: 1.5rem;
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         ul {
             grid-template-columns: 1fr;
         }

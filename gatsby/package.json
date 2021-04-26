@@ -15,8 +15,6 @@
     "prebuild": "netlify-lambda install"
   },
   "dependencies": {
-    "@fontsource/open-sans": "^4.2.2",
-    "@fontsource/staatliches": "^4.2.3",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
