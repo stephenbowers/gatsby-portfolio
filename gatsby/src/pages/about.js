@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import SanityImage from 'gatsby-plugin-sanity-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import SEO from '../components/SEO';
 
 const BioStyles = styled.div`
@@ -11,12 +11,12 @@ const BioStyles = styled.div`
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 20px;
         border-radius: 50%;
         max-width: 200px;
     }
 
     .bio-text {
+        margin-top: 20px;
         padding-left: 1rem;
         padding-right: 1rem;
     }
@@ -61,7 +61,9 @@ export const query = graphql`
             biography
             tagline
             image {
-                ...ImageWithPreview
+                asset {
+                    gatsbyImageData(width: 200, placeholder: BLURRED)
+                }
             }
         }
     }
@@ -78,7 +80,7 @@ export default function AboutPage({ data }) {
             <BioStyles>
                 <SEO title={"About"} />
                 <h2>About</h2>
-                <SanityImage {...bio.image} width={200} height={200} alt={bio.tagline} />
+                <GatsbyImage image={bio.image.asset.gatsbyImageData} width={200} height={200} alt={bio.tagline} />
                 <div className="bio-text">
                     <p>I'm a San Diego based web developer looking for new opportunities and a company to grow with. I am experienced in HTML, CSS, Javascript, and React. I also have experience with Wordpress, Node, and MongoDB.</p>
                     <p>In another area of my life, I teach, coach, and perform longform improv comedy. I'm part of a community based on support and collaboration.</p>

@@ -31,13 +31,5 @@ export default {
         token: process.env.SANITY_TOKEN,
       },
     },
-    {
-      resolve: 'gatsby-plugin-sanity-image',
-      options: {
-        projectId: 'wl845ngl',
-        dataset: 'production',
-        apiVersion: '2021-04-16',
-      },
-    },
   ],
 };

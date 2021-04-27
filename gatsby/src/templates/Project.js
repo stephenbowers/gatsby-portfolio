@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
-import SanityImage from 'gatsby-plugin-sanity-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 
@@ -32,7 +32,7 @@ export default function SingleProjectPage({ data }) {
         <h2>{project.name}</h2>
         <ProjectStyles>
         <Link className="back" to="/portfolio">Back</Link>
-            <a className="center" href={project.demoUrl}><SanityImage {...project.image} alt={project.name} /></a>
+            <a className="center" href={project.demoUrl}><GatsbyImage image={project.image.asset.gatsbyImageData} alt={project.name} /></a>
             <a className="center" href={project.demoUrl}>{project.name}</a>
             {project.githubUrl ? <a href={project.githubUrl}>Github Repo</a> : ""}
             <p>{project.description}</p>
@@ -53,7 +53,9 @@ export const query = graphql`
             githubUrl
             demoUrl
             image {
-                ...ImageWithPreview
+                asset {
+                    gatsbyImageData(width: 800, placeholder: BLURRED)
+                }
             }
         }
     }

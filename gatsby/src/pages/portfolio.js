@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import SanityImage from 'gatsby-plugin-sanity-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import SEO from '../components/SEO';
 
 const ProjectsGrid = styled.div`
@@ -44,7 +44,9 @@ export const query = graphql`
                 demoUrl
                 id
                 image {
-                    ...ImageWithPreview
+                    asset {
+                        gatsbyImageData(width: 400, placeholder: BLURRED)
+                    }
                 }
             }
         }
@@ -61,7 +63,7 @@ export default function PortfolioPage({ data }) {
             <ProjectsGrid> {/* Grid of Projects */}
                 {projects.map((project) => (
                     <ProjectsStyles key={project.id}> {/* Individual Project */}
-                        <a href={"project/" + project.slug.current}><SanityImage {...project.image} width={500} height={300} alt={project.name} /></a>
+                        <a href={"project/" + project.slug.current}><GatsbyImage image={project.image.asset.gatsbyImageData} width={500} height={300} alt={project.name} /></a>
                         <a href={project.demoUrl}>{project.name}</a>
                         {project.githubUrl ? <a href={project.githubUrl}>Github Repo</a> : ""}
                         <a href={"project/" + project.slug.current}>More Details</a>
