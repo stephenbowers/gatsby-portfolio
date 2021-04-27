@@ -54,7 +54,7 @@ export const query = graphql`
             demoUrl
             image {
                 asset {
-                    gatsbyImageData(width: 800, placeholder: BLURRED)
+                    gatsbyImageData(width: 800, layout: CONSTRAINED, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
             }
         }

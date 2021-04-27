@@ -45,7 +45,7 @@ export const query = graphql`
                 id
                 image {
                     asset {
-                        gatsbyImageData(width: 400, placeholder: BLURRED)
+                        gatsbyImageData(width: 400, layout: CONSTRAINED, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                     }
                 }
             }
@@ -63,7 +63,7 @@ export default function PortfolioPage({ data }) {
             <ProjectsGrid> {/* Grid of Projects */}
                 {projects.map((project) => (
                     <ProjectsStyles key={project.id}> {/* Individual Project */}
-                        <a href={"project/" + project.slug.current}><GatsbyImage image={project.image.asset.gatsbyImageData} width={500} height={300} alt={project.name} /></a>
+                        <a href={"project/" + project.slug.current}><GatsbyImage image={project.image.asset.gatsbyImageData} alt={project.name} /></a>
                         <a href={project.demoUrl}>{project.name}</a>
                         {project.githubUrl ? <a href={project.githubUrl}>Github Repo</a> : ""}
                         <a href={"project/" + project.slug.current}>More Details</a>

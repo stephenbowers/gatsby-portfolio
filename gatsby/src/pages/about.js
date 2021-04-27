@@ -8,11 +8,15 @@ const BioStyles = styled.div`
     display: grid;
 
     img {
+        border-radius: 50%;
+    }
+
+    .img-container {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        border-radius: 50%;
         max-width: 200px;
+        max-height: 200px;
     }
 
     .bio-text {
@@ -62,7 +66,7 @@ export const query = graphql`
             tagline
             image {
                 asset {
-                    gatsbyImageData(width: 200, placeholder: BLURRED)
+                    gatsbyImageData(width: 200, height: 200, layout: CONSTRAINED, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
             }
         }
@@ -80,7 +84,9 @@ export default function AboutPage({ data }) {
             <BioStyles>
                 <SEO title={"About"} />
                 <h2>About</h2>
-                <GatsbyImage image={bio.image.asset.gatsbyImageData} width={200} height={200} alt={bio.tagline} />
+                <div className="img-container">
+                    <GatsbyImage image={bio.image.asset.gatsbyImageData} alt={bio.tagline} />
+                </div>
                 <div className="bio-text">
                     <p>I'm a San Diego based web developer looking for new opportunities and a company to grow with. I am experienced in HTML, CSS, Javascript, and React. I also have experience with Wordpress, Node, and MongoDB.</p>
                     <p>In another area of my life, I teach, coach, and perform longform improv comedy. I'm part of a community based on support and collaboration.</p>
