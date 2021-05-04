@@ -11,6 +11,12 @@ export default {
             description: 'Name of the company',
         },
         {
+            name: 'placement',
+            title: 'Placement in List',
+            type: 'number',
+            validation: Rule => Rule.required().integer().positive().min(1),
+        },
+        {
             name: 'startDate',
             title: 'Start Date',
             type: 'date',
@@ -47,11 +53,11 @@ export default {
     ],
     orderings: [
         {
-            title: 'Start Date, Desc.',
-            name: 'startDateDesc',
+            title: 'Placement, First to Last',
+            name: 'placementRankAsc',
             by: [
-                {field: 'startDate', direction: 'desc'}
-            ]
-        }
-    ]
+                {field: 'placement', direction: 'asc'}
+            ],
+        },
+    ],
 };

@@ -11,6 +11,12 @@ export default {
             description: 'Name of the school',
         },
         {
+            name: 'placement',
+            title: 'Placement in List',
+            type: 'number',
+            validation: Rule => Rule.required().integer().positive().min(1),
+        },
+        {
             name: 'startYear',
             title: 'Start Year',
             type: 'date',
@@ -30,6 +36,15 @@ export default {
             name: 'degree',
             title: 'Degree',
             type: 'string',
+        },
+    ],
+    orderings: [
+        {
+            title: 'Placement, First to Last',
+            name: 'placementRankAsc',
+            by: [
+                {field: 'placement', direction: 'asc'}
+            ],
         },
     ],
 };

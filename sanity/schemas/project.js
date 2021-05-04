@@ -11,6 +11,12 @@ export default {
             description: 'Name of the project',
         },
         {
+            name: 'placement',
+            title: 'Placement in List',
+            type: 'number',
+            validation: Rule => Rule.required().integer().positive().min(1),
+        },
+        {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
@@ -44,6 +50,20 @@ export default {
             type: 'url',
             description: 'URL to demo or live site',
         },
-        // Can add technologies
+        {
+            name: 'technologies',
+            title: 'Technologies',
+            type: 'array',
+            of: [{ type: 'reference', to: [{ type: 'technology'}] }],
+        },
+    ],
+    orderings: [
+        {
+            title: 'Placement, First to Last',
+            name: 'placementRankAsc',
+            by: [
+                {field: 'placement', direction: 'asc'}
+            ],
+        },
     ],
 };

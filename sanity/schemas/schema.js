@@ -10,6 +10,7 @@ import project from './project';
 import job from './job';
 import education from './education';
 import bio from './bio';
+import technology from './technology';
 
 export default createSchema({
   // We name our schema
@@ -22,5 +23,6 @@ export default createSchema({
     job,
     education,
     bio,
+    technology,
   ]),
 })
