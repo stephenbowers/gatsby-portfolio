@@ -33,7 +33,7 @@ const ProjectsStyles = styled.div`
 
 export const query = graphql`
     query ProjectQuery {
-        projects: allSanityProject {
+        projects: allSanityProject(sort: {fields: placement}) {
             nodes {
                 name
                 slug {

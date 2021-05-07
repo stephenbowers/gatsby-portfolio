@@ -41,7 +41,7 @@ const ResumeStyles = styled.div`
 
 export const query = graphql`
     query JobQuery {
-        jobs: allSanityJob {
+        jobs: allSanityJob(sort: {fields: placement}) {
             nodes {
                 id
                 company
@@ -52,7 +52,7 @@ export const query = graphql`
                 duties
             }
         }
-        schools: allSanityEducation {
+        schools: allSanityEducation(sort: {fields: placement}) {
                 nodes {
                     id
                     school
