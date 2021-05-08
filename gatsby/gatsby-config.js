@@ -31,20 +31,5 @@ export default {
         token: process.env.SANITY_TOKEN,
       },
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Staatliches`,
-            variants: [`400`],
-          },
-          {
-            family: `Open Sans`,
-            variants: [`400`],
-          },
-        ],
-      },
-    },
   ],
 };
