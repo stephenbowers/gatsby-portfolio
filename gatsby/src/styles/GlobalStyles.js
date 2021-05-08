@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+
 const GlobalStyles = createGlobalStyle`
     :root {
         --black: #000000; //
@@ -12,10 +13,6 @@ const GlobalStyles = createGlobalStyle`
     body {
         background-color: #dee3e0;
         color: var(--black);
-    }
-
-    .center {
-        text-align: center;
     }
 
     img {
@@ -32,14 +29,6 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
     }
 
-    html {
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    nav, h1, h2, h3, h4, h5, h6 {
-        font-family: 'Staatliches', sans-serif;
-    }
-
     nav, h1, h2 {
         color: var(--dimgray);
         text-align: center;
@@ -52,6 +41,10 @@ const GlobalStyles = createGlobalStyle`
     }
     a:hover {
         color: var(--morningblue);
+    }
+
+    .center {
+        text-align: center;
     }
 `;
 

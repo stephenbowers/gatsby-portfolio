@@ -3,39 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import SEO from '../components/SEO';
 
-const MyForm = () => {
-
-    const [serverState, setServerState] = useState({
-      submitting: false,
-      status: null
-    });
-    const handleServerResponse = (ok, msg, form) => {
-      setServerState({
-        submitting: false,
-        status: { ok, msg }
-      });
-      if (ok) {
-        form.reset();
-      }
-    };
-    const handleOnSubmit = e => {
-      e.preventDefault();
-      const form = e.target;
-      setServerState({ submitting: true });
-      axios({
-        method: "post",
-        url: "https://getform.io/f/ee32c79d-5560-4a7b-a18b-1a5eef2db6ec",
-        data: new FormData(form)
-      })
-        .then(r => {
-          handleServerResponse(true, "Thanks!", form);
-        })
-        .catch(r => {
-          handleServerResponse(false, r.response.data.error, form);
-        });
-    };
-
-    const FormStyles = styled.div`
+const FormStyles = styled.div`
     .form {
         display: grid;
     }
@@ -76,6 +44,38 @@ const MyForm = () => {
         padding: 0 1rem;
     }
     `;
+
+const MyForm = () => {
+
+    const [serverState, setServerState] = useState({
+      submitting: false,
+      status: null
+    });
+    const handleServerResponse = (ok, msg, form) => {
+      setServerState({
+        submitting: false,
+        status: { ok, msg }
+      });
+      if (ok) {
+        form.reset();
+      }
+    };
+    const handleOnSubmit = e => {
+      e.preventDefault();
+      const form = e.target;
+      setServerState({ submitting: true });
+      axios({
+        method: "post",
+        url: "https://getform.io/f/ee32c79d-5560-4a7b-a18b-1a5eef2db6ec",
+        data: new FormData(form)
+      })
+        .then(r => {
+          handleServerResponse(true, "Thanks!", form);
+        })
+        .catch(r => {
+          handleServerResponse(false, r.response.data.error, form);
+        });
+    };
 
     return (
       <>
