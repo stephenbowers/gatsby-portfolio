@@ -18,8 +18,8 @@ export default function SEO({ children, location, description, title, image}) {
         <html lang="en" />
         <title>{title}</title>
         {/* Fav Icons */}
-        {/* <link rel="icon" type="image/svg+xml" href="/...svg" /> */}
-        {/* <link rel="alternate icon" href="/...ico" /> */}
+        <link rel="icon" type="image/svg+xml" href="/src/assets/images/favicon.svg" />
+        <link rel="alternate icon" href="/static/favicon.ico" />
 
         {/* Meta Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
