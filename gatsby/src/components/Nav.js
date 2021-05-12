@@ -52,6 +52,12 @@ const NavStyles = styled.nav`
         ul {
             display: flex;
             flex-direction: column;
+            text-align: center;
+        }
+
+        .logo {
+            margin-top: 1rem;
+            padding: 0;
         }
     }
 
@@ -62,9 +68,8 @@ const NavStyles = styled.nav`
         li {
             font-size: 1.25rem;
         }
-        .logo {
-            text-align: center;
-            padding-left: 0;
+        .logo img {
+            max-width: 150px;
         }
     }
 `;
