@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Logo from '../../static/Logo.svg';
 
 const NavStyles = styled.nav`
     margin-bottom: 4rem;
@@ -14,8 +15,10 @@ const NavStyles = styled.nav`
     }
     li {
         font-size: 2rem;
+        align-self: center;
     }
-    li:hover {
+    .navlink:hover,
+    .logo:hover {
         transform: translate(0, 5%);
     }
     a {
@@ -25,6 +28,12 @@ const NavStyles = styled.nav`
     .logo {
         text-align: left;
         padding-left: 2rem;
+        align-self: center;
+        padding-top: 1rem;
+    }
+
+    .logo img {
+        max-width: 200px;
     }
 
     @media (max-width: 750px) {
@@ -36,6 +45,13 @@ const NavStyles = styled.nav`
     @media (max-width: 650px) {
         li {
             font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 550px) {
+        ul {
+            display: flex;
+            flex-direction: column;
         }
     }
 
@@ -58,15 +74,15 @@ export default function Nav() {
         <NavStyles>
             <ul>
                 <li className="logo">
-                    <Link to="/">ThatStephenBowers</Link>
+                    <Link to="/"><img src={Logo} alt="logo" /></Link>
                 </li>
-                <li>
+                <li className="navlink">
                     <Link to="/about">About</Link>
                 </li>
-                <li>
+                <li className="navlink">
                     <Link to="/portfolio">Portfolio</Link>
                 </li>
-                <li>
+                <li className="navlink">
                     <Link to="/contact">Contact</Link>
                 </li>
             </ul>
