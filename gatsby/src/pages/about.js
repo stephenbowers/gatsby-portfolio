@@ -31,6 +31,7 @@ const BioStyles = styled.div`
 `;
 
 const ResumeStyles = styled.div`
+    margin-bottom: 2rem;
     .school {
         margin-bottom: 10px;
     }

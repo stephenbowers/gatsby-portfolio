@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 const ProjectsGrid = styled.div`
     display: grid;
     gap: 2rem;
+    margin-bottom: 2rem;
 `;
 
 const ProjectsStyles = styled.div`

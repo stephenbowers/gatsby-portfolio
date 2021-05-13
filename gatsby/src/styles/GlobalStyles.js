@@ -3,11 +3,13 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     :root {
-        --black: #000000; //
-        --onyx: #363946; //
-        --dimgray: #696773; //
-        --morningblue: #819595; //
-        --ashgray: #b1b6a6; // 
+        --black: #000000; 
+        --onyx: #363946;
+        --dimgray: #696773; 
+        --morningblue: #819595; 
+        --ashgray: #b1b6a6; 
+        --yellow: #E5D759;
+        --blue: #7293C5;
     }
 
     body {
@@ -33,6 +35,11 @@ const GlobalStyles = createGlobalStyle`
         color: var(--dimgray);
         text-align: center;
     }
+
+    h2 {
+      font-size: 2rem;
+    }
+
     a {
         color: var(--dimgray);
     }

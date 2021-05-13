@@ -23,6 +23,9 @@ const NavStyles = styled.nav`
     }
     a {
         text-decoration: none;
+        &[aria-current='page'] {
+            color: var(--blue);
+        }
     }
 
     .logo {
