@@ -9,8 +9,8 @@ const ProjectsGrid = styled.div`
     display: grid;
     gap: 2rem;
     margin-bottom: 2rem;
-    margin-left: auto;
     place-content: center;
+    padding: 1rem;
 `;
 
 const ProjectsStyles = styled.div`
@@ -24,7 +24,7 @@ const ProjectsStyles = styled.div`
         display: block;
         margin-left: auto;
         margin-right: auto;
-        max-width: 500px;
+        max-width: 800px;
     }
 
     .links {
@@ -32,12 +32,6 @@ const ProjectsStyles = styled.div`
         flex-direction: column;
         margin-left: auto;
         margin-right: auto;
-    }
-
-    @media (max-width: 550px) {
-        img {
-            max-width: 300px;
-        }
     }
 `;
 
@@ -55,7 +49,7 @@ export const query = graphql`
                 id
                 image {
                     asset {
-                        gatsbyImageData(width: 400, layout: CONSTRAINED, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                        gatsbyImageData(width: 800, layout: CONSTRAINED, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                     }
                 }
             }
