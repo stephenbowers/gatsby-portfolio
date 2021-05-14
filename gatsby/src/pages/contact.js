@@ -4,9 +4,17 @@ import styled from "styled-components";
 import SEO from '../components/SEO';
 
 const FormStyles = styled.div`
+    margin-left: auto;
+    margin-right: auto;
+
+    .col-md-8, .mt-5 {
+      display: flex;
+      flex-direction: column;
+    }
+
     .form {
       display: grid;
-      max-width: 600px;
+      grid-template-columns: 600px;
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 2rem;
@@ -22,12 +30,16 @@ const FormStyles = styled.div`
     }
 
     input, textarea {
+      display: relative;
       margin-bottom: .75rem;
-      width: 100%;
-      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+      max-width: 90%;
       padding: 1rem;
       border-radius: 5px;
       font-size: 1.25rem;
+      border: 1px solid black;
     }
 
     input:focus {
@@ -61,15 +73,14 @@ const FormStyles = styled.div`
     }
 
     @media (max-width: 800px) {
-      .form, input, textarea {
-        max-width: 400px;
+      .form {
+        grid-template-columns: 400px;
       }
     }
 
     @media (max-width: 550px) {
-      padding: 0 1rem;
-      .form, input, textarea {
-        max-width: 300px;
+      .form {
+        grid-template-columns: 250px;
       }
     }
     `;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Logo from '../../static/Logo.svg';
 
 const NavStyles = styled.nav`
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
     ul {
         margin: 0;
         padding: 0;

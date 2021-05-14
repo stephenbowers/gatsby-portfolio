@@ -3,18 +3,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import SEO from '../components/SEO';
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProjectsGrid = styled.div`
     display: grid;
     gap: 2rem;
     margin-bottom: 2rem;
+    margin-left: auto;
+    place-content: center;
 `;
 
 const ProjectsStyles = styled.div`
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: repeat(4, auto);
-    text-align: center;
     p {
         margin: 0;
     }
@@ -23,6 +25,13 @@ const ProjectsStyles = styled.div`
         margin-left: auto;
         margin-right: auto;
         max-width: 500px;
+    }
+
+    .links {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     @media (max-width: 550px) {
@@ -65,9 +74,11 @@ export default function PortfolioPage({ data }) {
                 {projects.map((project) => (
                     <ProjectsStyles key={project.id}> {/* Individual Project */}
                         <a href={"project/" + project.slug.current}><GatsbyImage image={project.image.asset.gatsbyImageData} alt={project.name} /></a>
-                        <a href={project.demoUrl}>{project.name}</a>
-                        {project.githubUrl ? <a href={project.githubUrl}>Github Repo</a> : ""}
-                        <a href={"project/" + project.slug.current}>More Details</a>
+                        <div className="links">
+                            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer"><FaExternalLinkAlt /> {project.name}</a>
+                            {project.githubUrl ? <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"><FaExternalLinkAlt /> Github Repo</a> : ""}
+                            <a href={"project/" + project.slug.current}>More Details</a>
+                        </div>
                     </ProjectsStyles>
                 ))}
             </ProjectsGrid>

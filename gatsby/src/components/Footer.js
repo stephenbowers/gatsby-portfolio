@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 
+const FooterStyles = styled.footer`
+    padding-bottom: 1rem;
+`;
+
 const SocialStyles = styled.ul`
     display: flex;
     flex-direction: row;
@@ -20,7 +24,7 @@ const SocialStyles = styled.ul`
 
     a {
         display: grid;
-        font-size: 1.5rem;
+        font-size: 2rem;
         color: var(--dimgray);
         align-items: center;
         padding: 5px;
@@ -35,7 +39,7 @@ const SocialStyles = styled.ul`
 
 export default function Footer() {
     return (
-        <footer>
+        <FooterStyles>
             <div>
                 <SocialStyles>
                     <li>
@@ -51,6 +55,6 @@ export default function Footer() {
                 </SocialStyles>
             </div>
             <p className="center">&copy; Stephen Bowers {new Date().getFullYear()}</p>
-        </footer>
+        </FooterStyles>
     );
 }
