@@ -3,8 +3,10 @@ import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const ProjectStyles = styled.div`
+    margin-bottom: 2rem;
     display: grid;
     a {
         font-size: 1rem;
@@ -32,9 +34,9 @@ export default function SingleProjectPage({ data }) {
         <h2>{project.name}</h2>
         <ProjectStyles>
         <Link className="back" to="/portfolio">Back</Link>
-            <a className="center" href={project.demoUrl}><GatsbyImage image={project.image.asset.gatsbyImageData} alt={project.name} /></a>
-            <a className="center" href={project.demoUrl}>{project.name}</a>
-            {project.githubUrl ? <a href={project.githubUrl}>Github Repo</a> : ""}
+            <a className="center" href={project.demoUrl} target="_blank" rel="noopener noreferrer"><GatsbyImage image={project.image.asset.gatsbyImageData} alt={project.name} /></a>
+            <a className="center" href={project.demoUrl} target="_blank" rel="noopener noreferrer"><FaExternalLinkAlt /> {project.name}</a>
+            {project.githubUrl ? <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"><FaExternalLinkAlt /> Github Repo</a> : ""}
             <p>{project.description}</p>
         </ProjectStyles>
         </>
