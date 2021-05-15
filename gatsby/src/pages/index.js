@@ -33,8 +33,8 @@ const HomeStyles = styled.div`
   .image-container {
     display: flex;
     place-content: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   @keyframes tilt {
